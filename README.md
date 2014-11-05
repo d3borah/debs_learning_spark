@@ -14,12 +14,14 @@ debs_learning_spark
     * *plan to reuse the RDD in multiple actions. set the StorageLevel Enum* 
 * .cache()  
   * *cache() is the default persist (StorageLevel.MEMORY_ONLY_SER)*
-
-
-### Actions
 * .flatMap()
   * *Applies a map function that returns a sequence for each element in a list, flattens the results.*
 * .map()
+* .filter()
+* .mapPartitions()
+ 
+
+### Actions
 * .reduceByKey()
 * .countByValue()
 * .saveAsTextFile()
@@ -31,4 +33,5 @@ debs_learning_spark
   * *examine the DAG, which is like a query plan. does not contain info on optimizer decisions or what is in cache.*  
 
 ###Links
-[More about flatmap in scala](http://alvinalexander.com/scala/collection-scala-flatmap-examples-map-flatten)
+* [More about flatmap in scala](http://alvinalexander.com/scala/collection-scala-flatmap-examples-map-flatten)
+* [Spark Programming Guide](http://spark.apache.org/docs/latest/programming-guide.html)
