@@ -16,8 +16,9 @@ debs_learning_spark
 * .cache()  
   * *cache() is the default persist (StorageLevel.MEMORY_ONLY_SER)*
 * .flatMap(func)
-  * *Applies a map function that returns a sequence for each element in a list, flattens the results.*
+  * *Applies a map function that returns a sequence of 0 or more elements for each element in a list, flattens the results.*
 * .map(func)
+  * *each element going through function returns 1 element* 
 * .filter(func)
   * *Returns elements for which func returns True* 
 * .mapPartitions(func)
