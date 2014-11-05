@@ -3,9 +3,9 @@
 val inputfile = sc.textFile("README.md")  
 
 /*
-Each partition generates a list of keywords, so its a list of lists. What we really want is a 
-list of keywords. flatMap works applying a map function that returns a sequence for each element 
-in the list, and then flattening the results.
+Each partition generates a list of keywords, and you end up with a list of lists. 
+What we really want to map is a list of keywords. flatMap works by applying a map function 
+that returns a sequence for each element in the list, and then flattening the results.
 Potentially nteresting resource with other flatmap examples (not Spark specific):
 http://alvinalexander.com/scala/collection-scala-flatmap-examples-map-flatten
 */
