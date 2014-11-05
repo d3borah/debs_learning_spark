@@ -4,15 +4,15 @@ debs_learning_spark
 
 ## Spark Context Operations
 
-### RDD Creation and RDD Transformation Operations
+### RDD Creation and RDD Transformation Operations. Do not get evaluated until passed to an Action. 
 * .parallelize()  
-  * *Upon action, parallelize a collection in your driver program. Must fit in memory on one machine.*
+  * *Parallelize a collection in your driver program. Must fit in memory on one machine.*
 * .wholeTextFile()
-  * *Upon action, whole file loaded at once.*
+  * *Whole file loaded at once. Often used with unstructured data, or records spanning multiple lines, which need to be parsed from the whole file.*
 * .textFile()
-  * *Upon action, loads only the necessary lines from file.*
+  * *Loads only the necessary lines from file. Can be more efficient in case of node loss, etc.*
 * .persist()
-  * *plan to reuse the RDD in multiple actions. set the StorageLevel Enum* 
+  * *Plan to reuse the RDD in multiple actions. set the StorageLevel Enum* 
 * .cache()  
   * *cache() is the default persist (StorageLevel.MEMORY_ONLY_SER)*
 * .map(func)
