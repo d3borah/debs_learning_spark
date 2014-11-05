@@ -12,13 +12,13 @@ debs_learning_spark
 * .textFile()
   * *Upon action, loads only the necessary lines from file.*
 * .persist()
-    * *plan to reuse the RDD in multiple actions. set the StorageLevel Enum* 
+  * *plan to reuse the RDD in multiple actions. set the StorageLevel Enum* 
 * .cache()  
   * *cache() is the default persist (StorageLevel.MEMORY_ONLY_SER)*
-* .flatMap(func)
-  * *first applies a function that returns a sequence of 0 or more elements for each element, then flattens that.*
 * .map(func)
-  * *Applies a function that returns 1 element for each input element* 
+  * *Applies a function that returns 1 element for each input element*   * 
+* .flatMap(func)
+  * *First applies a function that returns a sequence of 0 or more elements for each element, then flattens that.*
 * .filter(func)
   * *Returns elements for which func returns True* 
 * .mapPartitions(func)
