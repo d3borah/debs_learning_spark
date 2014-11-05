@@ -21,7 +21,7 @@ debs_learning_spark
 * .filter(func)
   * *Returns elements for which func returns True* 
 * .mapPartitions(func)
-  * *On a partition, given an iterator of element(s) in that partition's RDD, return an iterator of result elements. Use cases include avoiding constructing expensive objects (eg partition specific counters, parsers, and writers) for each element, instead passing functions with these objects into .mapPartitions().*
+  * *On a partition, given an iterator of element(s) in that partition's RDD, return an iterator of result elements. Use to avoid constructing expensive objects (eg partition specific counters, parsers, and writers) for each element, instead passing functions with these objects into .mapPartitions().*
  
 
 ### Actions
