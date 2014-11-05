@@ -2,23 +2,24 @@ debs_learning_spark
 ===================
 ### notes and code while I learn Apache Spark, all error my own
 
-### RDD Creations and RDD Transformations
+## Spark Context Operations
 
+### RDD Creation and RDD Transformation Operations
+* .parallelize()  
+  * *Upon action, parallelize a collection in your driver program. Must fit in memory on one machine.*
 * .wholeTextFile()
   * *Upon action, whole file loaded at once.*
 * .textFile()
   * *Upon action, loads only the necessary lines from file.*
-* .parallelize()  
-  * *Upon action, parallelize a collection in your driver program. Must fit in memory on one machine.*
 * .persist()
     * *plan to reuse the RDD in multiple actions. set the StorageLevel Enum* 
 * .cache()  
   * *cache() is the default persist (StorageLevel.MEMORY_ONLY_SER)*
-* .flatMap()
+* .flatMap(func)
   * *Applies a map function that returns a sequence for each element in a list, flattens the results.*
-* .map()
-* .filter()
-* .mapPartitions()
+* .map(func)
+* .filter(func)
+* .mapPartitions(func)
   * *On a partition, given an iterator of element(s) in that partition's RDD, return an iterator of result elements. Use cases include avoiding constructing expensive objects (eg partition specific counters, parsers, and writers) for each element, instead passing functions with these objects into .mapPartitions().*
  
 
