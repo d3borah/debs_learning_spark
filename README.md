@@ -14,6 +14,7 @@ RDD creation and transformations
 actions
 ```
 .flatMap()
+  [More about flatmap in scala](http://alvinalexander.com/scala/collection-scala-flatmap-examples-map-flatten)
 .toDebugString()
 .reduceByKey()
 .countByValue()
