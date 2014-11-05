@@ -19,6 +19,7 @@ debs_learning_spark
   * *Applies a map function that returns a sequence for each element in a list, flattens the results.*
 * .map(func)
 * .filter(func)
+  * *Returns elements for which func returns True* 
 * .mapPartitions(func)
   * *On a partition, given an iterator of element(s) in that partition's RDD, return an iterator of result elements. Use cases include avoiding constructing expensive objects (eg partition specific counters, parsers, and writers) for each element, instead passing functions with these objects into .mapPartitions().*
  
