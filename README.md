@@ -5,11 +5,11 @@ debs_learning_spark
 ### RDD creation and transformations
 
 * .wholeTextFile()
-  * *Whole file loaded at once.*
+  * *Upon action or node loss, whole file loaded at once.*
 * .textFile()
-  * *Loads only the necessary lines from file.*
+  * *Upon action or node loss, loads only the necessary lines from file.*
 * .parallelize()  
-  * *Rather than load a file, parallelize a collection in your driver program. Must fit in memory on one machine.*
+  * *Upon action or node loss, parallelize a collection in your driver program. Must fit in memory on one machine.*
 
 
 ### Actions
