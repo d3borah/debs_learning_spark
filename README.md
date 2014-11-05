@@ -21,7 +21,7 @@ debs_learning_spark
 * .flatMap()
   * *Applies a map function that returns a sequence for each element in a list, flattens the results.*
 * .toDebugString()
-  * *examine your DAG, which is like a query plan. does not contain info on optimizer decisions or what is in cache.*  
+  * *examine the DAG, which is like a query plan. does not contain info on optimizer decisions or what is in cache.*  
 * .reduceByKey()
 * .countByValue()
 * .saveAsTextFile()
