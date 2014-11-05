@@ -17,15 +17,18 @@ debs_learning_spark
 
 
 ### Actions
-
 * .flatMap()
   * *Applies a map function that returns a sequence for each element in a list, flattens the results.*
-* .toDebugString()
-  * *examine the DAG, which is like a query plan. does not contain info on optimizer decisions or what is in cache.*  
+* .map()
 * .reduceByKey()
 * .countByValue()
 * .saveAsTextFile()
+* .first()
+* .collect()
+
+### Other
+* .toDebugString()
+  * *examine the DAG, which is like a query plan. does not contain info on optimizer decisions or what is in cache.*  
 
 ###Links
-
 [More about flatmap in scala](http://alvinalexander.com/scala/collection-scala-flatmap-examples-map-flatten)
