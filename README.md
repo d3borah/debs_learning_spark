@@ -1,14 +1,14 @@
 debs_learning_spark
 ===================
-###notes and code while I learn Apache Spark, notes added as I go
+### notes and code while I learn Apache Spark
 
-###RDD creation and transformations
+### RDD creation and transformations
 ```
 .textFile()
 .wholeTextFile()
 ```
 
-###actions
+### Actions
 ```
 .flatMap()   
 .toDebugString()
@@ -16,5 +16,6 @@ debs_learning_spark
 .countByValue()
 .saveAsTextFile()
 ```
-Links
+###Links
+
 [More about flatmap in scala](http://alvinalexander.com/scala/collection-scala-flatmap-examples-map-flatten)
