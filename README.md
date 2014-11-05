@@ -2,7 +2,7 @@ debs_learning_spark
 ===================
 ### notes and code while I learn Apache Spark, all error my own
 
-### RDD creation and transformations
+### RDD Creations and RDD Transformations
 
 * .wholeTextFile()
   * *Upon action, whole file loaded at once.*
