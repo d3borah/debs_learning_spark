@@ -26,9 +26,10 @@ debs_learning_spark
 ### Actions
 * .reduceByKey()
 * .countByValue()
-* .saveAsTextFile()
 * .first()
 * .collect()
+* .take(num)
+* .saveAsTextFile()
 
 ### Other
 * .toDebugString()
