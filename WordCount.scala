@@ -1,12 +1,12 @@
-//base RDD from text file - each element of the RDD is a line
+//BASE RDD (HADOOP RDD) from text file. Each element of the RDD is a line.
 
 val inputfile = sc.textFile("README.md")  
 
 /*
-each partition generates a list of keywords, so its a list of lists. what we really want is a 
+Each partition generates a list of keywords, so its a list of lists. What we really want is a 
 list of keywords. flatMap works applying a map function that returns a sequence for each element 
-in the list, and then flattening the results interesting resource with other flatmap examples 
-(not Spark specific):
+in the list, and then flattening the results.
+Potentially nteresting resource with other flatmap examples (not Spark specific):
 http://alvinalexander.com/scala/collection-scala-flatmap-examples-map-flatten
 */
 
@@ -15,8 +15,8 @@ val myMap = keywords.map(word => (word,1))
 val myReduce = myMap.reduceByKey(_ + _)
 
 /*
-with saveAsTextFile you will get some partition files back. would need post-processing to force 
-it into one file. or consider Apache Avro.
+With saveAsTextFile() you get some partition files back. If you need one file, would need post-processing. 
+or consider Apache Avro.
 */
 
 myReduce.saveAsTextFile("wc_out")
