@@ -4,13 +4,13 @@
 ###dependencies
 
 * Scala and Java: 
-    * Maven dependency.
+    * Maven dependency. Build with Maven or sbt.
 ```
 groupId = org.apache.spark
 artifactId = spark-core_2.10
 version = 1.1.0
 ```
-    * Build with Maven or sbt. 
+
 * Python:
     * spark-submit script. 
 
