@@ -18,7 +18,7 @@ debs_learning_spark
 * .persist()
   * *Plan to reuse the RDD in multiple actions or for iterative algorithms. Set the StorageLevel Enum.* 
 * .cache()  
-  * *cache() is the default persist (StorageLevel.MEMORY_ONLY_SER)*
+  * *cache() is the default persist (StorageLevel.MEMORY_ONLY)*
 
 ### RDD Transformations. Not evaluated until Action. 
 * .map(func)
