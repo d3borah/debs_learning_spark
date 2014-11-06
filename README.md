@@ -2,6 +2,13 @@ debs_learning_spark
 ===================
 ### notes and code while I learn Apache Spark, all error my own
 
+###Links which are halping me. 
+* [More about flatmap in scala](http://alvinalexander.com/scala/collection-scala-flatmap-examples-map-flatten)
+* [Spark Programming Guide](http://spark.apache.org/docs/latest/programming-guide.html)
+* [Pattern Matching in Scala](http://www.scala-lang.org/old/node/120)
+* [Maven Tutorial](https://www.youtube.com/watch?v=al7bRZzz4oU)
+
+
 ## Spark Context Operations
 
 ### RDD Creation and RDD Transformation Operations. Not evaluated until Action. 
@@ -55,6 +62,3 @@ There are examples of these functions being used together to compute per key ave
 * .toDebugString()
   * *examine the DAG, which is like a query plan. does not contain info on optimizer decisions or what is in cache.*  
 
-###Links
-* [More about flatmap in scala](http://alvinalexander.com/scala/collection-scala-flatmap-examples-map-flatten)
-* [Spark Programming Guide](http://spark.apache.org/docs/latest/programming-guide.html)
