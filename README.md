@@ -33,10 +33,11 @@ debs_learning_spark
 ### RDD Transformations Specific to particular forms of RDDs. Not evaluated until Action. 
 * .mapValues(func)
   * *An easier way to operate on the values of a PairRDD, analogous to map{case (x, y) (x, func(y)}*
-
-
-### Actions
 * .reduceByKey()
+  * *in contrast to reduce(), implemented as a transformation on PairRDDs, as there may be a large number of keys.*
+ 
+### Actions
+* .reduce()
 * .countByValue()
 * .first()
 * .collect()
