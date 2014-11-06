@@ -7,7 +7,8 @@ val sc = new SparkContext(conf)
 
 //BASE RDD (HADOOP RDD) from text file. Each element of the RDD is a line.
 
-val inputfile = sc.textFile("README.md")  
+val input = sc.textFile("README.md")  
+val input = sc.parallelize(List("Spark","Bork","Borg"))
 
 /*
 Each partition generates a list of keywords, and you end up with a list of lists. 
@@ -17,7 +18,7 @@ Potentially nteresting resource with other flatmap examples (not Spark specific)
 http://alvinalexander.com/scala/collection-scala-flatmap-examples-map-flatten
 */
 
-val keywords = inputfile.flatMap(l => l.split(" "))
+val keywords = input.flatMap(l => l.split(" "))
 val myMap = keywords.map(word => (word,1))
 val myReduce = myMap.reduceByKey(_ + _)
 
