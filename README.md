@@ -35,6 +35,8 @@ debs_learning_spark
   * *An easier way to operate on the values of a PairRDD, analogous to map{case (x, y) (x, func(y)}*
 * .reduceByKey()
   * *in contrast to reduce(), implemented as a transformation on PairRDDs, as there may be a large number of keys.*
+* .foldByKey()
+ 
  
 ### Actions
 * .reduce()
