@@ -34,9 +34,12 @@ debs_learning_spark
 * .mapValues(func)
   * *An easier way to operate on the values of a PairRDD, analogous to map{case (x, y) (x, func(y)}*
 * .reduceByKey()
-  * *in contrast to reduce(), implemented as a transformation on PairRDDs, as there may be a large number of keys.*
+  * *in contrast to the action reduce(), implemented as a transformation on PairRDDs, as there may be a large number of keys. function is of form (V,V) => V*
+ ```
+.mapValues() and .reduceByKey() both take a parameter to set number of tasks.
+There are examples of these functions being used together to compute per key averages. 
+```
 * .foldByKey()
- 
  
 ### Actions
 * .reduce()
