@@ -22,18 +22,20 @@ version = 1.1.0
 ### Passing functions
 * functions in the driver prog are serialized and shipped out to the cluster. 
 
-In Python, can pass lambda functions, top level functions, or locally defined functions. 
+* Python, can pass lambda functions, top level functions, or locally defined functions. 
   * Be careful when passing functions that are member of objects or contain references to fields within the object. Don't pass these in your function (eg. self.method) because otherwise the whole object will attempt to be serialized and shipped... instead extract to local ref within your function. 
+
 Do this:
 ```
 def getMatchesNoReference(self, rdd)
     query = self.query
     return rdd.filter(lambda x: query in x)
 ```
-In Scala, can pass functions defined inline or references to methods or static functions. 
+* Scala, can pass functions defined inline or references to methods or static functions. 
   * the function and data referenced needs to implement Java's Serializable interface. 
   * same issue with whole objects being serialized, but not as obvious with no "self" keyword. 
- Do this:
+
+Do this:
 ```
 def getMatchesNoReference(rdd: RDD[String]): RDD[String] = {
   val query_ = this.query
