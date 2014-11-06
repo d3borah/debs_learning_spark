@@ -7,6 +7,8 @@ debs_learning_spark
 ### RDD Creation and RDD Transformation Operations. Do not get evaluated until passed to an Action. 
 * .parallelize()  
   * *Parallelize a collection in your driver program. Must fit in memory on one machine.*
+    * .parallelizePairs()
+      * *Parallelize a tuple collection into a PairRDD (only needed in Java)*
 * .wholeTextFile()
   * *Whole file loaded at once. Often used with unstructured data, or records spanning multiple lines, which need to be parsed from the whole file.*
 * .textFile()
