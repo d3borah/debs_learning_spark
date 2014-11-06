@@ -17,5 +17,5 @@ version = 1.1.0
 
 2) In app, set a "conf" value, and pass it when initializing a spark context. 
   * When you initialize the Spark context and pass "local", Spark is running on one local thread only. 
-  * shit down sc with stop(sc) or system exit. 
+  * shut down sc with stop(sc) or system exit. 
 
