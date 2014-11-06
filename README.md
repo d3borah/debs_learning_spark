@@ -46,8 +46,10 @@ There are examples of these functions being used together to compute per key ave
 * .countByValue()
 * .first()
 * .collect()
+  * *send RDD too driver. in many cases the RDD is too big to collect(), and is instead written out*
 * .take(num)
 * .saveAsTextFile()
+* .saveAsSequenceFile()
 
 ### Other
 * .toDebugString()
