@@ -20,7 +20,7 @@ debs_learning_spark
 
 ### RDD Transformations. Do not get evaluated until passed to an Action.
 * .map(func)
-  * *Applies a function that returns 1 element for each input element*   * 
+  * *Applies a function that returns 1 element for each input element*
 * .flatMap(func)
   * *First applies a function that returns a sequence of 0 or more elements for each element, then flattens that.*
 * .filter(func)
