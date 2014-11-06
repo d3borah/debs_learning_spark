@@ -11,10 +11,14 @@ debs_learning_spark
   * *Whole file loaded at once. Often used with unstructured data, or records spanning multiple lines, which need to be parsed from the whole file.*
 * .textFile()
   * *Loads only the necessary lines from file. Can be more efficient in case of node loss, etc.*
+
+### RDD Usage Planning. Do not get evaluated until passed to an Action.
 * .persist()
-  * *Plan to reuse the RDD in multiple actions. set the StorageLevel Enum* 
+  * *Plan to reuse the RDD in multiple actions or for iterative algorithms. Set the StorageLevel Enum.* 
 * .cache()  
   * *cache() is the default persist (StorageLevel.MEMORY_ONLY_SER)*
+
+### RDD Transformations. Do not get evaluated until passed to an Action.
 * .map(func)
   * *Applies a function that returns 1 element for each input element*   * 
 * .flatMap(func)
@@ -24,7 +28,6 @@ debs_learning_spark
 * .mapPartitions(func)
   * *On a partition, given an iterator of element(s) in that partition's RDD, return an iterator of result elements. Use to avoid constructing expensive objects (eg partition specific counters, parsers, and writers) for each element, instead passing functions with these objects into .mapPartitions().*
  
-
 ### Actions
 * .reduceByKey()
 * .countByValue()
