@@ -5,8 +5,9 @@ debs_learning_spark
 ###Links which are halping me. 
 
 * [Spark Programming Guide](http://spark.apache.org/docs/latest/programming-guide.html)
-* [Spark Pair RDD API-DOC Scala](http://spark.apache.org/docs/latest/api/scala/index.html#org.apache.spark.rdd.PairRDDFunctions)
-* [Spark RDD API-DOC Scala](http://spark.apache.org/docs/latest/api/scala/index.html#org.apache.spark.rdd.RDD)
+* [Spark Core Doc](https://spark.apache.org/docs/0.9.1/api/core/index.html#org.apache.spark.package)
+* [Spark Pair RDD Scala DOC](http://spark.apache.org/docs/latest/api/scala/index.html#org.apache.spark.rdd.PairRDDFunctions)
+* [Spark RDD Scala DOC](http://spark.apache.org/docs/latest/api/scala/index.html#org.apache.spark.rdd.RDD)
 * [More about flatmap in scala](http://alvinalexander.com/scala/collection-scala-flatmap-examples-map-flatten)
 * [Pattern Matching in Scala](http://www.scala-lang.org/old/node/120)
 * [Maven Tutorial](https://www.youtube.com/watch?v=al7bRZzz4oU)
