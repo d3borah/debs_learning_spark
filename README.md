@@ -3,11 +3,14 @@ debs_learning_spark
 ### notes and code while I learn Apache Spark, all error my own
 
 ###Links which are halping me. 
-* [More about flatmap in scala](http://alvinalexander.com/scala/collection-scala-flatmap-examples-map-flatten)
+
 * [Spark Programming Guide](http://spark.apache.org/docs/latest/programming-guide.html)
+* [Spark Pair RDD API-DOC Scala](http://spark.apache.org/docs/latest/api/scala/index.html#org.apache.spark.rdd.PairRDDFunctions)
+* [Spark RDD API-DOC Scala](http://spark.apache.org/docs/latest/api/scala/index.html#org.apache.spark.rdd.RDD)
+* [More about flatmap in scala](http://alvinalexander.com/scala/collection-scala-flatmap-examples-map-flatten)
 * [Pattern Matching in Scala](http://www.scala-lang.org/old/node/120)
 * [Maven Tutorial](https://www.youtube.com/watch?v=al7bRZzz4oU)
-
+* [Databricks Intro to Spark devops on DSE 4.5](https://docs.google.com/document/d/1TjOd3HjrhbbPFOawE3uH2IPyTPZDNh-Ma0TZ8l4eSNM/preview?sle=true)
 
 ## Spark Context Operations
 
@@ -41,7 +44,9 @@ debs_learning_spark
 * .mapValues(func)
   * *An easier way to operate on the values of a PairRDD, analogous to map{case (x, y) (x, func(y)}*
 * .reduceByKey()
-  * *in contrast to the action reduce(), implemented as a transformation on PairRDDs, as there may be a large number of keys. function is of form (V,V) => V*
+  * *in contrast to the action reduce(), implemented as a transformation on PairRDDs, because there may be a large number of keys. function is of form (V,V) => V. Output with common key on each partition is combined before shuffling, making this more efficient than .groupByKey for large data*
+* .groupByKey()
+  * *Group the values for each key in the RDD into a single sequence. In groupByKey(), all the key-value pairs are shuffled around.  Contrast to reduceByKey().*
  ```
 .mapValues() and .reduceByKey() both take a parameter to set number of tasks.
 There are examples of these functions being used together to compute per key averages. 
