@@ -37,6 +37,11 @@ debs_learning_spark
   * *Applies a function that returns 1 element for each input element*
 * .flatMap(func)
   * *First applies a function that returns a sequence of 0 or more elements for each element, then flattens that.*
+```
+val x = sc.parallelize(1 to 5,3)
+x.flatMap(List.fill(2)(_)).collect
+Array[Int] = Array[1,1,2,2,3,3,4,4,5,5)
+```
 * .filter(func)
   * *Returns elements for which func returns True* 
 * .mapPartitions(func)
