@@ -50,12 +50,12 @@ debs_learning_spark
   * *An easier way to operate on the values of a PairRDD, analogous to map{case (x, y) (x, func(y)}*
 * .reduceByKey()
   * *in contrast to the action reduce(), implemented as a transformation on PairRDDs, because there may be a large number of keys. function is of form (V,V) => V. Output with common key on each partition is combined before shuffling, making this more efficient than .groupByKey for large data*
-* .groupByKey()
-  * *Group the values for each key in the RDD into a single sequence. In groupByKey(), all the key-value pairs are shuffled around.  Contrast to reduceByKey().*
  ```
 .mapValues() and .reduceByKey() both take a parameter to set number of tasks.
 There are examples of these functions being used together to compute per key averages. 
 ```
+* .groupByKey()
+  * *Group the values for each key in the RDD into a single sequence. In groupByKey(), all the key-value pairs are shuffled around.  Contrast to reduceByKey().*
 * .foldByKey()
 
 ###Two RDDs
