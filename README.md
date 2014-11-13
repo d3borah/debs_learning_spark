@@ -41,7 +41,8 @@ debs_learning_spark
   * *Returns elements for which func returns True* 
 * .mapPartitions(func)
   * *On a partition, given an iterator of element(s) in that partition's RDD, return an iterator of result elements. Use to avoid constructing expensive objects (eg partition specific counters, parsers, and writers) for each element, instead passing functions with these objects into .mapPartitions().*
-
+* .filterWith(func, func)
+  * the first function transforms the partition index to a type (simple example:  (i => i), the second function takes the transformed partition index and the RDD elements (simple example: ((a, i) =>  i == 0)  which filters for the elements in partition 0. )
 
 ### RDD Transformations Specific to particular forms of RDDs. Not evaluated until Action. 
 
