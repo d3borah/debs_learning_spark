@@ -12,6 +12,7 @@ debs_learning_spark
 * [Pattern Matching in Scala](http://www.scala-lang.org/old/node/120)
 * [Maven Tutorial](https://www.youtube.com/watch?v=al7bRZzz4oU)
 * [Databricks Intro to Spark devops on DSE 4.5](https://docs.google.com/document/d/1TjOd3HjrhbbPFOawE3uH2IPyTPZDNh-Ma0TZ8l4eSNM/preview?sle=true)
+* [Zhen He's Spark RDD API Notes](http://homepage.cs.latrobe.edu.au/zhe/ZhenHeSparkRDDAPIExamples.html)
 
 ## Spark Context Operations
 
@@ -41,7 +42,10 @@ debs_learning_spark
 * .mapPartitions(func)
   * *On a partition, given an iterator of element(s) in that partition's RDD, return an iterator of result elements. Use to avoid constructing expensive objects (eg partition specific counters, parsers, and writers) for each element, instead passing functions with these objects into .mapPartitions().*
 
+
 ### RDD Transformations Specific to particular forms of RDDs. Not evaluated until Action. 
+
+###Pair RDDs
 * .mapValues(func)
   * *An easier way to operate on the values of a PairRDD, analogous to map{case (x, y) (x, func(y)}*
 * .reduceByKey()
@@ -53,7 +57,11 @@ debs_learning_spark
 There are examples of these functions being used together to compute per key averages. 
 ```
 * .foldByKey()
- 
+
+###Two RDDs
+* .zip()
+  * positional zip of 2 rdd's together. returns tuples, interpreted as pairRDDs. 
+
 ### Actions
 * .reduce()
 * .countByValue()
