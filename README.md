@@ -19,7 +19,7 @@ debs_learning_spark
 
 ## Spark Context Operations
 
-### RDD Creation and RDD Transformation Operations. Not evaluated until Action. 
+### RDD Creation and RDD Transformation Operations.  
 * .parallelize()  
   * *Parallelize a collection in your driver program. Must fit in memory on one machine.*
     * .parallelizePairs()
@@ -29,13 +29,13 @@ debs_learning_spark
 * .textFile()
   * *Loads only the necessary lines from file. Can be more efficient in case of node loss, etc.*
 
-### RDD Usage Planning. Not evaluated until Action. 
+### RDD Usage Planning. (transformations)
 * .persist()
   * *Plan to reuse the RDD in multiple actions or for iterative algorithms. Set the StorageLevel Enum.* 
 * .cache()  
   * *cache() is the default persist (StorageLevel.MEMORY_ONLY)*
 
-### RDD Transformations. Not evaluated until Action. 
+### RDD Transformations. 
 * .map(func)
   * *Applies a function that returns 1 element for each input element*
 * .flatMap(func)
@@ -52,7 +52,7 @@ Array[Int] = Array[1,1,2,2,3,3,4,4,5,5)
 * .filterWith(func, func)
   * the first function transforms the partition index to a type (simple example:  (i => i), the second function takes the transformed partition index and the RDD elements (simple example: ((a, i) =>  i == 0)  which filters for the elements in partition 0. )
 
-### RDD Transformations Specific to particular forms of RDDs. Not evaluated until Action. 
+### RDD Transformations Specific to particular forms of RDDs. 
 
 ###Pair RDDs
 * .mapValues(func)
