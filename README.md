@@ -28,7 +28,7 @@ debs_learning_spark
 * .wholeTextFile()
   * *Whole file loaded at once. Often used with unstructured data, or records spanning multiple lines, which need to be parsed from the whole file. returns tuple of (fileName, content)*
 * .textFile()
-  * *Loads only the necessary lines from file. Can be more efficient in case of node loss, etc.*
+  * *Loads only the necessary lines from file. Can be more efficient than .wholeTextFile() in case of node loss, etc.*
 
 ### RDD Usage Planning (transformations)
 * .persist()
