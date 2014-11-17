@@ -58,6 +58,9 @@ Array[Int] = Array[1,1,2,2,3,3,4,4,5,5)
 ```
 myrdd.foreachPartition(x => println(x.reduce(_ + _)))
 ```
+```
+myrdd.foreachPartition(x => { NotSerializable notSerializable = new NotSerializable(); notSerializable.doSomething(x);  } )
+```
 * .forEachWith()
 ```
 myrdd.foreachWith(i => i)((x,i) => if (x % 2 == 1 && i % 2 == 0) println(x) )
