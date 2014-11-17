@@ -53,14 +53,17 @@ Array[Int] = Array[1,1,2,2,3,3,4,4,5,5)
 * .mapPartitions(func)
   * *On a partition, given an iterator of element(s) in that partition's RDD, return an iterator of result elements. Use to avoid constructing expensive objects (eg partition specific counters, parsers, and writers) for each element, instead passing functions with these objects into .mapPartitions().*
 * .filterWith(func, func)
-  * the first function transforms the partition index to a type (simple example:  (i => i), the second function takes the rdd elements and the transformed partition index (simple example: ((x, i) =>  i == 0)  which filters for the elements in partition 0. )
-* .forEachWith()
-  * *like .filterWith() but for parameterless functions besides filter
+  *the first function transforms the partition index to a type. the second function takes the rdd elements and the transformed partition index*
+```
+myrdd.filterWith(i => i)((x,i) => x % 2 == 0 || i % 2 == 0).collect()
+```
+* .foreachWith()
+  * *like .filterWith() but for parameterless functions besides filter*
 ```
 myrdd.foreachWith(i => i)((x,i) => if (x % 2 == 1 && i % 2 == 0) println(x) )
 ```  
 * .foreachPartition()
-  * *like forEachWith() for a parameterless function, over an iterator
+  * *like .foreachWith() for a parameterless function, over an iterator*
 ```
 myrdd.foreachPartition(x => println(x.reduce(_ + _)))
 ```
