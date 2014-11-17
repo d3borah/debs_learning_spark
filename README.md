@@ -82,6 +82,12 @@ a.zip(b).zip(c).map((x) => (x._1._1, x._1._2, x._2 )).collect
 * .saveAsTextFile()
 * .saveAsSequenceFile()
 
+### input and output formats
+* .hadoopFile()
+  * *takes 3 parameters {inputFormat, key class, value class} *. example inputFormats: KeyValueTextInputFormat. tab separated K,V.   
+```
+val input = sc.hadoopFile[Text,Text,KeyValueTextInputFormat](inputFile).map{case(x,y) => (x.toString, y.toString)
+```
 ### Other
 * .toDebugString()
   * *examine the DAG, which is like a query plan. does not contain info on optimizer decisions or what is in cache.*  
