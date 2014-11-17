@@ -14,6 +14,8 @@ debs_learning_spark
 * [Databricks Intro to Spark devops on DSE 4.5](https://docs.google.com/document/d/1TjOd3HjrhbbPFOawE3uH2IPyTPZDNh-Ma0TZ8l4eSNM/preview?sle=true)
 * [Zhen He's Spark RDD API Examples](http://homepage.cs.latrobe.edu.au/zhe/ZhenHeSparkRDDAPIExamples.html)
 * [splittable compression with lzo](http://blog.cloudera.com/blog/2009/11/hadoop-at-twitter-part-1-splittable-lzo-compression/)
+* [Databricks Spark knowledge base](http://databricks.gitbooks.io/databricks-spark-knowledge-base/content/)
+* [Spark user list](http://apache-spark-user-list.1001560.n3.nabble.com/)
 
 ## Spark Context Operations
 
