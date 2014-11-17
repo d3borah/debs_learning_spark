@@ -66,7 +66,11 @@ There are examples of these functions being used together to compute per key ave
 
 ###Two RDDs
 * .zip()
-  * positional zip of 2 rdd's together. returns tuples, interpreted as pairRDDs. 
+  * positional zip of 2 rdd's together. returns tuples, 2-tuple can be interpreted as pairRDDs. 
+```
+#zip 3 collections into a 3-tuple
+a.zip(b).zip(c).map((x) => (x._1._1, x._1._2, x._2 )).collect
+```
 
 ### Actions
 * .reduce()
