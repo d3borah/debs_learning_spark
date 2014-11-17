@@ -81,12 +81,25 @@ a.zip(b).zip(c).map((x) => (x._1._1, x._1._2, x._2 )).collect
 ```
 
 ## Actions
+
 * .reduce()
-* .countByValue()
-* .first()
 * .collect()
-  * *send RDD too driver. in many cases the RDD is too big to collect(), and is instead written out*
+  * *send RDD too driver. in many cases the RDD is too big to collect(), and is instead written out, or use .take() instead*
 * .take(num)
+* .first()
+
+* .count()
+* .countByValue()
+  * *Returns a map that contains all unique values of the RDD and their respective occurrence counts. This operation will finally aggregate the information on a single reducer, so avoid if data does not fit in memory*
+
+
+## Actions for pair RDDs
+* .countByKey(pair)
+  * *like .count(), but for [K,V] - counts the values for each distinct key separately. Avoid if data does not fit in memory*
+* .collectAsMap(pair)
+  * *like .collect(), but works on key-value RDD* 
+ 
+## Actions to save 
 * .saveAsTextFile()
 * .saveAsSequenceFile()
 
