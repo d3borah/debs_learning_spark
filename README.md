@@ -17,9 +17,10 @@ debs_learning_spark
 * [Databricks Spark knowledge base](http://databricks.gitbooks.io/databricks-spark-knowledge-base/content/)
 * [Spark user list](http://apache-spark-user-list.1001560.n3.nabble.com/)
 
-## Spark Context Operations
+# Spark Context Operations
+##Transformations
 
-### RDD Creation and RDD Transformation Operations.  
+### RDD Creation (transformations)
 * .parallelize()  
   * *Parallelize a collection in your driver program. Must fit in memory on one machine.*
     * .parallelizePairs()
@@ -29,13 +30,13 @@ debs_learning_spark
 * .textFile()
   * *Loads only the necessary lines from file. Can be more efficient in case of node loss, etc.*
 
-### RDD Usage Planning. (transformations)
+### RDD Usage Planning (transformations)
 * .persist()
   * *Plan to reuse the RDD in multiple actions or for iterative algorithms. Set the StorageLevel Enum.* 
 * .cache()  
   * *cache() is the default persist (StorageLevel.MEMORY_ONLY)*
 
-### RDD Transformations. 
+### common RDD Transformations. 
 * .map(func)
   * *Applies a function that returns 1 element for each input element*
 * .flatMap(func)
@@ -47,14 +48,15 @@ Array[Int] = Array[1,1,2,2,3,3,4,4,5,5)
 ```
 * .filter(func)
   * *Returns elements for which func returns True* 
+
+### RDD Transformations which utilize partitions explicitly 
 * .mapPartitions(func)
   * *On a partition, given an iterator of element(s) in that partition's RDD, return an iterator of result elements. Use to avoid constructing expensive objects (eg partition specific counters, parsers, and writers) for each element, instead passing functions with these objects into .mapPartitions().*
 * .filterWith(func, func)
   * the first function transforms the partition index to a type (simple example:  (i => i), the second function takes the transformed partition index and the RDD elements (simple example: ((a, i) =>  i == 0)  which filters for the elements in partition 0. )
 
-### RDD Transformations Specific to particular forms of RDDs. 
 
-###Pair RDDs
+###Pair RDD transformations
 * .mapValues(func)
   * *An easier way to operate on the values of a PairRDD, analogous to map{case (x, y) (x, func(y)}*
 * .reduceByKey()
@@ -67,7 +69,7 @@ There are examples of these functions being used together to compute per key ave
   * *Group the values for each key in the RDD into a single sequence. In groupByKey(), all the key-value pairs are shuffled around.  Contrast to reduceByKey().*
 * .foldByKey()
 
-###Two RDDs
+###Two RDD tranformations
 * .zip()
   * positional zip of 2 rdd's together. returns tuples, 2-tuple can be interpreted as pairRDDs. 
 ```
@@ -75,7 +77,7 @@ There are examples of these functions being used together to compute per key ave
 a.zip(b).zip(c).map((x) => (x._1._1, x._1._2, x._2 )).collect
 ```
 
-### Actions
+## Actions
 * .reduce()
 * .countByValue()
 * .first()
@@ -85,13 +87,13 @@ a.zip(b).zip(c).map((x) => (x._1._1, x._1._2, x._2 )).collect
 * .saveAsTextFile()
 * .saveAsSequenceFile()
 
-### input and output formats
+## input and output formats
 * .hadoopFile()
   * *takes 3 parameters {inputFormat, key class, value class} *. example inputFormats: KeyValueTextInputFormat. tab separated K,V.   
 ```
 val input = sc.hadoopFile[Text,Text,KeyValueTextInputFormat](inputFile).map{case(x,y) => (x.toString, y.toString)
 ```
-### Other
+## Other
 * .toDebugString()
   * *examine the DAG, which is like a query plan. does not contain info on optimizer decisions or what is in cache.*  
 
