@@ -112,7 +112,13 @@ a.zip(b).zip(c).map((x) => (x._1._1, x._1._2, x._2 )).collect
   * *like .count(), but for [K,V] - counts the values for each distinct key separately. Avoid if data does not fit in memory*
 * .collectAsMap(pair)
   * *like .collect(), but works on key-value RDD. Avoid if data does not fit in memory*
- 
+
+### Actions to Sample
+.takeSample()
+  * *def takeSample(withReplacement: Boolean, num: Int, seed: Int): Array[T]*
+  * *internally randomizes, which is why it has seed parameter*
+  * *returns an Array not an RDD (unless you pass it in a parallelize function)*
+
 ## Actions to save 
 * .saveAsTextFile()
 * .saveAsSequenceFile()
