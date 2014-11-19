@@ -63,9 +63,13 @@ def myfunc(iter: Iterator[Int]) : Iterator[Int] = {
   result.iterator
 }
 x.mapPartitions(myfunc).collect
-
+  * *note the following will fail because it was a second serialization problem, in that the RNG function is not passed into mapPartitions(), resulting in partially applied function. instead use .mapPartitionsWithIndex()*
 ```
-  
+val newRDD = oldRDD.mapPartitions { iter =>
+  val rand = new Scala.util.random
+  iter.map(x => (x, Array.fill(10)(rand.nextDouble _)))
+}
+````  
 * .mapPartitionsWithIndex()
   * *like mapPartitions, but exposes a partition index for partition specificity. example shows partition specific RNG set with partition index and seed, which is possibly good practice for reporoducibility in case of failure*
 ```
