@@ -51,8 +51,23 @@ Array[Int] = Array[1,1,2,2,3,3,4,4,5,5)
 
 ### RDD Transformations which utilize partitions explicitly 
 * .mapPartitions(func)
-  * *On a partition, given an iterator of element(s) in that partition's RDD, return an iterator of result elements, which will be combined to form new RDD. Use to avoid constructing expensive or nonserializable objects (eg partition specific counters, parsers, writers) for each element, instead passing functions with these objects into .mapPartitions().*
+  * *On a partition, given an iterator of element(s) in that partition's RDD, return an iterator of result elements, which will be combined to form new RDD. Use to avoid constructing expensive or nonserializable objects for each element (eg partition specific counters, parsers, writers, random number generators). instead pass functions with these objects into .mapPartitions().*
+```
+val x = sc.parallelize(List(1, 2, 3, 4, 5, 6, 7, 8, 9,10), 3)
+def myfunc(iter: Iterator[Int]) : Iterator[Int] = {
+  var result = List[Int]()
+  while (iter.hasNext) {
+    val current = iter.next;
+    result = result ::: List.fill(scala.util.Random.nextInt(10))(current)
+  }
+  result.iterator
+}
+x.mapPartitions(myfunc).collect
+
+```
+  
 * .mapPartitionsWithIndex()
+  * *like mapPartitions, but exposes a partition index for partition specificity. example shows partition specific RNG set with partition index and seed, which is possibly good practice for reporoducibility in case of failure*
 ```
 val myAppSeed = 9311
 val newRDD = myRDD.mapPartitionsWithIndex { (indx, iter) =>
