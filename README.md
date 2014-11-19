@@ -51,7 +51,8 @@ Array[Int] = Array[1,1,2,2,3,3,4,4,5,5)
 
 ### RDD Transformations which utilize partitions explicitly 
 * .mapPartitions(func)
-  * *On a partition, given an iterator of element(s) in that partition's RDD, return an iterator of result elements. Use to avoid constructing expensive or nonserializable objects (eg partition specific counters, parsers, writers, thread specific random number generators) for each element, instead passing functions with these objects into .mapPartitions().*
+  * *On a partition, given an iterator of element(s) in that partition's RDD, return an iterator of result elements, which will be combined to form new RDD. Use to avoid constructing expensive or nonserializable objects (eg partition specific counters, parsers, writers) for each element, instead passing functions with these objects into .mapPartitions().*
+* .mapPartitionsWithIndex()
 ```
 val myAppSeed = 9311
 val newRDD = myRDD.mapPartitionsWithIndex { (indx, iter) =>
@@ -107,7 +108,7 @@ a.zip(b).zip(c).map((x) => (x._1._1, x._1._2, x._2 )).collect
 
 * .reduce()
 * .collect()
-  * *send RDD too driver. in many cases the RDD is too big to collect(), and is instead written out, or use .take() instead*
+  * *send RDD too driver as Array. in many cases the RDD is too big to collect(), and is instead written out, or use .take() instead. Can also apply a map first if provided a map function*
 * .take(num)
 * .first()
 * .count()
@@ -118,7 +119,7 @@ a.zip(b).zip(c).map((x) => (x._1._1, x._1._2, x._2 )).collect
 * .countByKey(pair)
   * *like .count(), but for [K,V] - counts the values for each distinct key separately. Avoid if data does not fit in memory*
 * .collectAsMap(pair)
-  * *like .collect(), but works on key-value RDD. Avoid if data does not fit in memory*
+  * *like .collect(), but works on key-value RDD and returns a map. Avoid if data does not fit in memory*
 
 ### Actions to Sample
 .takeSample()
