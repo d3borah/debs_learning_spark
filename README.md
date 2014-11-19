@@ -51,7 +51,13 @@ Array[Int] = Array[1,1,2,2,3,3,4,4,5,5)
 
 ### RDD Transformations which utilize partitions explicitly 
 * .mapPartitions(func)
-  * *On a partition, given an iterator of element(s) in that partition's RDD, return an iterator of result elements. Use to avoid constructing expensive objects (eg partition specific counters, parsers, and writers) for each element, instead passing functions with these objects into .mapPartitions().*
+  * *On a partition, given an iterator of element(s) in that partition's RDD, return an iterator of result elements. Use to avoid constructing expensive or nonserializable objects (eg partition specific counters, parsers, writers, random generators) for each element, instead passing functions with these objects into .mapPartitions().*
+```
+val newRDD = oldRDD.mapPartitions { iter =>
+  val rand = new Scala.util.random
+  iter.map(x => (x, Array.fill(10)(rand.nextDouble _)))
+}
+```
 * .filterWith(func, func)
   *the first function transforms the partition index to a type. the second function takes the rdd elements and the transformed partition index*
 ```
