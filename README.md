@@ -64,7 +64,7 @@ def myfunc(iter: Iterator[Int]) : Iterator[Int] = {
 }
 x.mapPartitions(myfunc).collect
 ```
-  * *note the following will fail because it has a second serialization problem:  result is partially applied function and doesn't infer correct RDD signature. instead use .mapPartitionsWithIndex()*
+  * *note the following will fail because it has a second serialization problem:  because of "_" result is partially applied function and doesn't infer correct RDD signature.*
 ```
 val newRDD = oldRDD.mapPartitions { iter =>
   val rand = new Scala.util.random
