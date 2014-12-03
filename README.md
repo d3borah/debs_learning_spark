@@ -18,7 +18,7 @@ debs_learning_spark
 * [Spark user list](http://apache-spark-user-list.1001560.n3.nabble.com/)
 * [Video - A Deeper Understanding of Spark Internals (Aaron Davidson)](https://www.youtube.com/watch?v=dmL0N3qfSc8)
 * [Spark 1.1 sort-based shuffle](https://databricks.com/blog/2014/10/10/spark-petabyte-sort.html)
-* 
+
 # Spark Context Operations
 ##Transformations
 
