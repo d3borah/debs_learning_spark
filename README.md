@@ -16,7 +16,9 @@ debs_learning_spark
 * [splittable compression with lzo](http://blog.cloudera.com/blog/2009/11/hadoop-at-twitter-part-1-splittable-lzo-compression/)
 * [Databricks Spark knowledge base](http://databricks.gitbooks.io/databricks-spark-knowledge-base/content/)
 * [Spark user list](http://apache-spark-user-list.1001560.n3.nabble.com/)
-
+* [Video - A Deeper Understanding of Spark Internals (Aaron Davidson)](https://www.youtube.com/watch?v=dmL0N3qfSc8)
+* [Spark 1.1 sort-based shuffle](https://databricks.com/blog/2014/10/10/spark-petabyte-sort.html)
+* 
 # Spark Context Operations
 ##Transformations
 
@@ -35,10 +37,12 @@ debs_learning_spark
   * *Plan to reuse the RDD in multiple actions or for iterative algorithms. Set the StorageLevel Enum.* 
 * .cache()  
   * *cache() is the default persist (StorageLevel.MEMORY_ONLY)*
-
+* .repartition()
+  * *dude, repartition can be expensive but could be a good idea if you  
+  
 ### common RDD Transformations. 
 * .map(func)
-  * *Applies a function that returns 1 element for each input element*
+  * *Applies a function that returns 1 element for each input element. Can return elements of different type*
 * .flatMap(func)
   * *First applies a function that returns a sequence of 0 or more elements for each element, then flattens that.*
 ```
@@ -72,7 +76,7 @@ val newRDD = oldRDD.mapPartitions { iter =>
 }
 ````  
 * .mapPartitionsWithIndex()
-  * *like mapPartitions, but exposes a partition index for partition specificity. example shows partition specific RNG set with partition index and seed, which is possibly good practice for reporoducibility in case of failure*
+  * *like mapPartitions, but exposes a partition index for partition specificity. example shows partition specific RNG set with partition index and seed, which is possibly good practice for reproducibility in case of failure*
 ```
 val myAppSeed = 9311
 val newRDD = myRDD.mapPartitionsWithIndex { (indx, iter) =>
@@ -101,12 +105,19 @@ myrdd.foreachPartition(x => { NotSerializable notSerializable = new NotSerializa
 
 
 ###Pair RDD transformations
+
 * .mapValues(func)
   * *An easier way to operate on the values of a PairRDD, analogous to map{case (x, y) (x, func(y)}*
+* .sortByKey()
+
+####reductions
+Reductions are done with hashmaps. In Spark 1.1, these reductions will be able to spill to disk.  However, wrt shuffle, each individual key must fit in memory (is this still true with the new sort-based shuffle??)
+Also, if individual keys are large, could still create memory pressure and GC issues. 
 * .groupByKey()
   * *Group the values for each key in the RDD into a single sequence. In groupByKey(), all the key-value pairs are shuffled around.  Instead use reduceByKey, foldByKey, combineByKey*
 * .reduceByKey()
   * *in contrast to the action reduce(), implemented as a transformation on PairRDDs, because there may be a large number of keys. function is of form (V,V) => V. Output with common key on each partition is combined before shuffling, making this more efficient than .groupByKey for large data*
+
  ```
 .mapValues() and .reduceByKey() both take a parameter to set number of tasks.
 There are examples of these functions being used together to compute per key averages. 
