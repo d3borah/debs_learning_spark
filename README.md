@@ -32,13 +32,13 @@ debs_learning_spark
 * .textFile()
   * *Loads only the necessary lines from file. Can be more efficient than .wholeTextFile() in case of node loss, etc.*
 
-### RDD Usage Planning (transformations)
+### RDD Usage Planning and Concurrency (transformations)
 * .persist()
   * *Plan to reuse the RDD in multiple actions or for iterative algorithms. Set the StorageLevel Enum.* 
 * .cache()  
   * *cache() is the default persist (StorageLevel.MEMORY_ONLY)*
 * .repartition()
-  * *dude, repartition can be expensive but could be a good idea if you  
+  * *dude, repartition can be expensive but could be a good idea for good concurrency. consider instead combining a repartition with an operation which needs a shuffle anyways (takes numPartitions, eg distinct(numPartitions = 6))
   
 ### common RDD Transformations. 
 * .map(func)
@@ -111,8 +111,8 @@ myrdd.foreachPartition(x => { NotSerializable notSerializable = new NotSerializa
 * .sortByKey()
 
 ####reductions
-Reductions are done with hashmaps. In Spark 1.1, these reductions will be able to spill to disk.  However, wrt shuffle, each individual key must fit in memory (is this still true with the new sort-based shuffle??)
-Also, if individual keys are large, could still create memory pressure and GC issues. 
+Reductions (and sortby) are done with hashmaps on each partition. In Spark 1.1, all these ops will be able to spill to disk. If individual K,V pair is large, could still create memory pressure and GC issues. 
+However, wrt shuffle, individual K,V pair must fit in memory (is this still true with the new sort-based shuffle??)
 * .groupByKey()
   * *Group the values for each key in the RDD into a single sequence. In groupByKey(), all the key-value pairs are shuffled around.  Instead use reduceByKey, foldByKey, combineByKey*
 * .reduceByKey()
